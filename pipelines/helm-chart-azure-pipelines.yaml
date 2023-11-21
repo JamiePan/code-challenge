@@ -28,7 +28,7 @@ stages:
     steps:
     - task: HelmDeploy@0
       displayName: 'Helm install'
-      timeoutInMinutes: 10
+      # timeoutInMinutes: 10
       inputs:
         connectionType: 'Azure Resource Manager'
         azureSubscription: 'Jamie-Azure-Service-Connection'
