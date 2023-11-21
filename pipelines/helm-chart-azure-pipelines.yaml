@@ -15,7 +15,7 @@ pool:
 
 variables:
   group: azure_credentials
-  APIKEY: $(APIKEY)
+  api_key: $(APIKEY)
 
 stages:
 - stage: HelmDeploy
@@ -37,5 +37,5 @@ stages:
         chartType: 'FilePath'
         chartPath: 'helm-chart'
         releaseName: $(helmReleaseName)
-        overrideValues: 'env.APIKEY=${{ variables.APIKEY }}'
+        overrideValues: 'env.APIKEY=${{ variables.api_key }}'
         waitForExecution: false
