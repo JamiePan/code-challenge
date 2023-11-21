@@ -7,15 +7,22 @@ pool:
 variables:
 - group: azure_credentials
 
-steps:
-- task: HelmDeploy@0
-  inputs:
-    connectionType: 'Azure Resource Manager'
-    azureSubscription: 'Jamie-Azure-Service-Connection'
-    azureResourceGroup: 'jamie-code-challenge'
-    kubernetesCluster: 'code-challenge-eks'
-    command: 'upgrade'
-    chartType: 'FilePath'
-    chartPath: '$(build.stagingdirectory)/helm-chart/'
-    releaseName: 'bestapiever'
-    overrideValues: 'env.APIKEY=$(APIKEY)'
+stages:
+- stage: HelmDeploy
+  jobs:
+  - job: helmdeploy
+    pool:
+      name: jamie-local-pool
+    steps:
+    - task: HelmDeploy@0
+      displayName: Helm Deploy
+      inputs:
+        connectionType: 'Azure Resource Manager'
+        azureSubscription: 'Jamie-Azure-Service-Connection'
+        azureResourceGroup: 'jamie-code-challenge'
+        kubernetesCluster: 'code-challenge-eks'
+        command: 'upgrade'
+        chartType: 'FilePath'
+        chartPath: '$(build.stagingdirectory)/helm-chart/'
+        releaseName: 'bestapiever'
+        overrideValues: 'env.APIKEY=$(APIKEY)'
