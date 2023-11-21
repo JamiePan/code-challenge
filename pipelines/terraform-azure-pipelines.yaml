@@ -12,6 +12,7 @@ trigger:
       - main.tf
       - pipelines/terraform-azure-pipelines.yaml
     exclude:
+      - helm-chart
       - pipelines/helm-chart-azure-pipelines.yaml
 
 pool:
