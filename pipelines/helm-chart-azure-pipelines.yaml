@@ -35,6 +35,6 @@ stages:
         command: 'install'
         chartType: 'FilePath'
         chartPath: 'helm-chart'
-        releaseName: 'bestapiever-helm'
+        releaseName: $(helmReleaseName)
         overrideValues: 'env.APIKEY=$(env.APIKEY)'
         waitForExecution: false
