@@ -40,7 +40,7 @@ variable "resource_group_name" {
 #   type        = string
 # }
 
-variable "subscription_id" {
-  description = "Subscription ID"
+variable "aks_cluster_name" {
+  description = "Name for AKS Cluster"
   type        = string
 }
