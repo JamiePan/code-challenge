@@ -42,7 +42,14 @@ stages:
         command: 'plan'
         environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
     - task: TerraformTaskV4@4
+      displayName: Terraform output
       inputs:
         provider: 'azurerm'
         command: 'output'
+        environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
+    - task: TerraformTaskV4@4
+      displayName: Terraform apply
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
         environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
