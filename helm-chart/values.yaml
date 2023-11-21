@@ -75,6 +75,10 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+env:
+  - name: "APIKEY"
+    value: ""
+    
 nodeSelector: {}
 
 tolerations: []
