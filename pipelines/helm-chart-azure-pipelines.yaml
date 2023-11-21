@@ -1,5 +1,14 @@
 trigger:
-- main
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - helm-chart
+      - pipelines/helm-chart-azure-pipelines.yaml
+    exclude:
+      - main.tf
+      - pipelines/terraform-azure-pipelines.yaml
 
 pool:
   vmImage: ubtuntu-latest
