@@ -1,0 +1,7 @@
+- task: KubernetesManifest@1
+  inputs:
+    action: 'deploy'
+    connectionType: 'azureResourceManager'
+    azureSubscriptionConnection: 'Jamie-Azure-Service-Connection'
+    azureResourceGroup: 'jamie-code-challenge'
+    kubernetesCluster: 'code-challenge-eks'
