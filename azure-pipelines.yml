@@ -35,3 +35,9 @@ stages:
         backendAzureRmStorageAccountName: 'jamietfstatebackend'
         backendAzureRmContainerName: 'tf-backend'
         backendAzureRmKey: 'terraform.tfstate'
+    - task: TerraformTaskV4@4
+      displayName: Terraform plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
