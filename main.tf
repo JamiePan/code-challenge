@@ -18,10 +18,42 @@ terraform {
 
 provider "azurerm" {
   skip_provider_registration = "true"
-  subscription_id = var.subscription_id
-  # client_id       = var.client_id
-  # client_secret   = var.client_secret
-  tenant_id       = var.tenant_id
-  use_msi         = true
+  subscription_id            = var.subscription_id
+  # client_id                = var.client_id
+  # client_secret            = var.client_secret
+  tenant_id                  = var.tenant_id
+  use_msi                    = true
   features {}
+}
+
+resource "azurerm_user_assigned_identity" "aks" {
+  name                = "uai-aks"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+}
+
+resource "azurerm_kubernetes_cluster" "jamie_aks_cluster" {
+  name                = var.aks_cluster_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  dns_prefix          = "jamieaksdns"
+
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_D2_v2"
+  }
+
+  identity {
+    type = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.aks.id]
+  }
+
+  # identity {
+  #   type = "SystemAssigned"
+  # }
+
+  tags = {
+    Environment = "code_challenge"
+  }
 }

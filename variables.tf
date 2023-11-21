@@ -40,3 +40,7 @@ variable "resource_group_name" {
 #   type        = string
 # }
 
+variable "subscription_id" {
+  description = "Subscription ID"
+  type        = string
+}
