@@ -37,5 +37,5 @@ stages:
         chartType: 'FilePath'
         chartPath: 'helm-chart'
         releaseName: $(helmReleaseName)
-        overrideValues: 'env.APIKEY=$(env.APIKEY)'
+        overrideValues: 'env.APIKEY=${{ variables.APIKEY }}'
         waitForExecution: false
