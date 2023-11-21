@@ -26,25 +26,15 @@ stages:
     pool:
       name: jamie-local-pool
     steps:
+
     - task: HelmDeploy@0
       displayName: 'Helm install'
-      # timeoutInMinutes: 10
       inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscription: 'Jamie-Azure-Service-Connection'
-        azureResourceGroup: 'jamie-code-challenge'
-        kubernetesCluster: 'code-challenge-eks'
-        # namespace: $(kubernetesNamespace)
-        command: install
-        arguments: --set env.APIKEY=$(env.APIKEY)
-        chartType: FilePath
-        chartPath: helm-chart
-        releaseName: $(helmReleaseName)
-    # - task: HelmDeploy@0
-    #   inputs:
-    #     connectionType: 'Azure Resource Manager'
-    #     azureSubscription: 'Jamie-Azure-Service-Connection'
-    #     azureResourceGroup: 'jamie-code-challenge'
-    #     kubernetesCluster: 'code-challenge-eks'
-    #     command: 'install'
-    #     chartType: 'Name'
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceConnection: 'Jamie-Azure-AKS-Connection'
+        command: 'install'
+        chartType: 'FilePath'
+        chartPath: 'helm-chart'
+        releaseName: 'bestapiever-helm'
+        overrideValues: 'env.APIKEY=$(env.APIKEY)'
+        waitForExecution: false
