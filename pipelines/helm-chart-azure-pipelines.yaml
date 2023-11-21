@@ -1,7 +1,21 @@
-- task: KubernetesManifest@1
+trigger:
+- main
+
+pool:
+  vmImage: ubtuntu-latest
+
+variables:
+- group: azure_credentials
+
+steps:
+- task: HelmDeploy@0
   inputs:
-    action: 'deploy'
-    connectionType: 'azureResourceManager'
-    azureSubscriptionConnection: 'Jamie-Azure-Service-Connection'
+    connectionType: 'Azure Resource Manager'
+    azureSubscription: 'Jamie-Azure-Service-Connection'
     azureResourceGroup: 'jamie-code-challenge'
     kubernetesCluster: 'code-challenge-eks'
+    command: 'upgrade'
+    chartType: 'FilePath'
+    chartPath: '$(build.stagingdirectory)/helm-chart/'
+    releaseName: 'bestapiever'
+    overrideValues: 'env.APIKEY=$(APIKEY)'
