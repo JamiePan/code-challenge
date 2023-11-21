@@ -21,9 +21,8 @@ stages:
         azureSubscription: 'Jamie-Azure-Service-Connection'
         azureResourceGroup: 'jamie-code-challenge'
         kubernetesCluster: 'code-challenge-eks'
-        command: 'upgrade'
+        command: 'install'
         chartType: 'FilePath'
-        chartPath: '.'
+        chartPath: '/helm-chart'
         releaseName: 'bestapiever'
         overrideValues: 'env.APIKEY=$(APIKEY)'
-        
