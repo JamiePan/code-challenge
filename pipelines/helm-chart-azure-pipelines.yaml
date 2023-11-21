@@ -22,7 +22,7 @@ stages:
   - job: helmdeploy
     variables:
       - name: helmReleaseName
-        value: 'bestapiever-helm-$(Build.BuildId)'
+        value: 'bestapiever-helm'
     pool:
       name: jamie-local-pool
     steps:
