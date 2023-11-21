@@ -14,7 +14,8 @@ pool:
   vmImage: ubtuntu-latest
 
 variables:
-- group: azure_credentials
+  group: azure_credentials
+  APIKEY: $(APIKEY)
 
 stages:
 - stage: HelmDeploy
