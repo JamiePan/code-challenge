@@ -23,7 +23,7 @@ variables:
 
 stages:
 - stage:  Validate
-  displayName: Terraform Plan
+  displayName: Validate
   jobs:
   - job: validate
     pool:
@@ -39,20 +39,8 @@ stages:
         backendAzureRmStorageAccountName: 'jamietfstatebackend'
         backendAzureRmContainerName: 'tf-backend'
         backendAzureRmKey: 'terraform.tfstate'
-    # - task: TerraformTaskV4@4
-    #   displayName: Terraform plan
-    #   inputs:
-    #     provider: 'azurerm'
-    #     command: 'plan'
-    #     environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
-    # - task: TerraformTaskV4@4
-    #   displayName: Terraform output
-    #   inputs:
-    #     provider: 'azurerm'
-    #     command: 'output'
-    #     environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
 - stage: Plan
-  displayName: DeployToK8s
+  displayName: Terraform Plan
   dependsOn: Validate
   jobs:
     - deployment: plan
