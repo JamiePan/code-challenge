@@ -68,16 +68,16 @@ stages:
         runOnce:
           deploy:
             steps:
-            - task: TerraformTaskV4@4
-              displayName: Terraform init
-              inputs:
-                provider: 'azurerm'
-                command: 'init'
-                backendServiceArm: 'Jamie-Azure-Service-Connection'
-                backendAzureRmResourceGroupName: 'jamie-code-challenge'
-                backendAzureRmStorageAccountName: 'jamietfstatebackend'
-                backendAzureRmContainerName: 'tf-backend'
-                backendAzureRmKey: 'terraform.tfstate'
+            # - task: TerraformTaskV4@4
+            #   displayName: Terraform init
+            #   inputs:
+            #     provider: 'azurerm'
+            #     command: 'init'
+            #     backendServiceArm: 'Jamie-Azure-Service-Connection'
+            #     backendAzureRmResourceGroupName: 'jamie-code-challenge'
+            #     backendAzureRmStorageAccountName: 'jamietfstatebackend'
+            #     backendAzureRmContainerName: 'tf-backend'
+            #     backendAzureRmKey: 'terraform.tfstate'
             - task: TerraformTaskV4@4
               displayName: Terraform apply
               inputs:
