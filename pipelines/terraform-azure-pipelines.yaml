@@ -53,7 +53,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            commandOptions: '-out tf.plan'
             environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
             
 - stage: Apply
@@ -83,6 +82,4 @@ stages:
               inputs:
                 provider: 'azurerm'
                 command: 'apply'
-                commandOptions: '-target=tf.plan'
                 environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
-            
