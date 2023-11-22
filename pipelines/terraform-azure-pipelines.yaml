@@ -47,7 +47,7 @@ stages:
     - job: plan
       pool:
         name: jamie-local-pool
-        steps:
+        tasks:
         - task: TerraformTaskV4@4
           displayName: Terraform plan
           inputs:
