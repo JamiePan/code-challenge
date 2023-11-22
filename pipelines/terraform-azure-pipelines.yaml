@@ -55,6 +55,12 @@ stages:
         provider: 'azurerm'
         command: 'output'
         environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
+
+- stage: Deploy
+  displayName: DeployToK8s
+  jobs:
+  - job: deploy
+    steps:
     - task: TerraformTaskV4@4
       env: myapp-dev
       displayName: Terraform apply
