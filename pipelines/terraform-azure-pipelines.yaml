@@ -62,7 +62,6 @@ stages:
   - job: deploy
     steps:
     - task: TerraformTaskV4@4
-      env: myapp-dev
       displayName: Terraform apply
       inputs:
         provider: 'azurerm'
