@@ -60,6 +60,8 @@ stages:
   displayName: DeployToK8s
   jobs:
   - job: deploy
+    pool:
+      name: jamie-local-pool
     steps:
     - task: TerraformTaskV4@4
       displayName: Terraform apply
