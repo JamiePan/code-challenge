@@ -44,7 +44,7 @@ stages:
   displayName: Terraform Plan
   dependsOn: Validate
   jobs:
-    - deployment: plan
+    - job: plan
       pool:
         name: jamie-local-pool
         steps:
