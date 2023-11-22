@@ -39,19 +39,18 @@ resource "azurerm_kubernetes_cluster" "jamie_aks_cluster" {
   dns_prefix          = "jamieaksdns"
 
   default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_D2_v2"
+    name                = "default"
+    # node_count = 2
+    enable_auto_scaling = true
+    max_count           = 3
+    min_count           = 1
+    vm_size             = "Standard_D2_v2"
   }
 
   identity {
     type = "UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.aks.id]
   }
-
-  # identity {
-  #   type = "SystemAssigned"
-  # }
 
   tags = {
     Environment = "code_challenge"
