@@ -64,7 +64,7 @@ stages:
               inputs:
                 provider: 'azurerm'
                 command: 'init'
-                commandOptions: '-reconfigure'
+                # commandOptions: '-reconfigure'
                 backendServiceArm: 'Jamie-Azure-Service-Connection'
                 backendAzureRmResourceGroupName: 'jamie-code-challenge'
                 backendAzureRmStorageAccountName: 'jamietfstatebackend'
@@ -74,5 +74,5 @@ stages:
               displayName: Terraform apply
               inputs:
                 provider: 'azurerm'
-                command: 'apply '
+                command: 'apply'
                 environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
