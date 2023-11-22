@@ -60,24 +60,24 @@ stages:
   displayName: DeployToK8s
   dependsOn: Validate
   jobs:
-  - job: deploy
-    pool:
-      name: jamie-local-pool
-    environment: myapp-dev
-    steps:
-    - task: TerraformTaskV4@4
-      displayName: Terraform init
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-        backendServiceArm: 'Jamie-Azure-Service-Connection'
-        backendAzureRmResourceGroupName: 'jamie-code-challenge'
-        backendAzureRmStorageAccountName: 'jamietfstatebackend'
-        backendAzureRmContainerName: 'tf-backend'
-        backendAzureRmKey: 'terraform.tfstate'
-    - task: TerraformTaskV4@4
-      displayName: Terraform apply
-      inputs:
-        provider: 'azurerm'
-        command: 'apply'
-        environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
+    - deployment: deploy
+      pool:
+        name: jamie-local-pool
+      environment: myapp-dev
+      steps:
+      - task: TerraformTaskV4@4
+        displayName: Terraform init
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'Jamie-Azure-Service-Connection'
+          backendAzureRmResourceGroupName: 'jamie-code-challenge'
+          backendAzureRmStorageAccountName: 'jamietfstatebackend'
+          backendAzureRmContainerName: 'tf-backend'
+          backendAzureRmKey: 'terraform.tfstate'
+      - task: TerraformTaskV4@4
+        displayName: Terraform apply
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
