@@ -25,7 +25,7 @@ stages:
 - stage:  Plan
   displayName: Terraform Plan
   jobs:
-  - job: validate
+  - job: plan
     pool:
       name: jamie-local-pool
     steps:
@@ -64,7 +64,7 @@ stages:
               inputs:
                 provider: 'azurerm'
                 command: 'init'
-                # commandOptions: '-reconfigure'
+                commandOptions: '-reconfigure'
                 backendServiceArm: 'Jamie-Azure-Service-Connection'
                 backendAzureRmResourceGroupName: 'jamie-code-challenge'
                 backendAzureRmStorageAccountName: 'jamietfstatebackend'
