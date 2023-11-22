@@ -22,8 +22,8 @@ variables:
 - group: azure_credentials
 
 stages:
-- stage:  Validate
-  displayName: Validate
+- stage:  Plan
+  displayName: Terraform Plan
   jobs:
   - job: validate
     pool:
@@ -39,21 +39,13 @@ stages:
         backendAzureRmStorageAccountName: 'jamietfstatebackend'
         backendAzureRmContainerName: 'tf-backend'
         backendAzureRmKey: 'terraform.tfstate'
+    - task: TerraformTaskV4@4
+      displayName: Terraform plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
 
-- stage: Plan
-  displayName: Terraform Plan
-  dependsOn: Validate
-  jobs:
-    - job: plan
-      pool:
-        name: jamie-local-pool
-      steps:
-        - task: TerraformTaskV4@4
-          displayName: Terraform plan
-          inputs:
-            provider: 'azurerm'
-            command: 'plan'
-            environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
             
 - stage: Apply
   displayName: Terraform Apply
