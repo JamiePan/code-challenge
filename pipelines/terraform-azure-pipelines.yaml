@@ -57,6 +57,7 @@ stages:
         environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
     - task: TerraformTaskV4@4
       displayName: Terraform apply
+      environment: myapp-dev
       inputs:
         provider: 'azurerm'
         command: 'apply'
