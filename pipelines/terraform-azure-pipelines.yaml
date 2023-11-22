@@ -22,17 +22,17 @@ variables:
 - group: azure_credentials
 
 stages:
-- stage: Validate
-  displayName: Validate
+- stage:  Validate
+  displayName: Terraform Plan
   jobs:
   - job: validate
     pool:
       name: jamie-local-pool
     steps:
-    - task: TerraformInstaller@0
-      displayName: Install Terraform
-      inputs:
-        terraformVersion: 'latest'
+    # - task: TerraformInstaller@0
+    #   displayName: Install Terraform
+    #   inputs:
+    #     terraformVersion: 'latest'
     - task: TerraformTaskV4@4
       displayName: Terraform init
       inputs:
@@ -63,6 +63,7 @@ stages:
   - job: deploy
     pool:
       name: jamie-local-pool
+    environment: myapp-dev
     steps:
     - task: TerraformTaskV4@4
       displayName: Terraform init
