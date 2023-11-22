@@ -32,7 +32,7 @@ stages:
       displayName: 'Helm install'
       inputs:
         connectionType: 'Kubernetes Service Connection'
-        kubernetesServiceConnection: 'Jamie-Azure-AKS-Connection'
+        kubernetesServiceConnection: 'Jamie-Azure-Kubernetes'
         command: 'install'
         chartType: 'FilePath'
         chartPath: 'helm-chart'
