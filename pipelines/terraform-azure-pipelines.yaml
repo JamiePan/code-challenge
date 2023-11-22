@@ -73,3 +73,8 @@ stages:
                 provider: 'azurerm'
                 command: 'apply'
                 environmentServiceNameAzureRM: 'Jamie-Azure-Service-Connection'
+                backendServiceArm: 'Jamie-Azure-Service-Connection'
+                backendAzureRmResourceGroupName: 'jamie-code-challenge'
+                backendAzureRmStorageAccountName: 'jamietfstatebackend'
+                backendAzureRmContainerName: 'tf-backend'
+                backendAzureRmKey: 'terraform.tfstate'
