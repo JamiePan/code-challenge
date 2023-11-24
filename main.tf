@@ -26,12 +26,6 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_user_assigned_identity" "aks" {
-  name                = "uai-aks"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-}
-
 resource "azurerm_kubernetes_cluster" "jamie_aks_cluster" {
   name                = var.aks_cluster_name
   location            = var.location
